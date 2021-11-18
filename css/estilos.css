@@ -1,0 +1,59 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    color: white;
+}
+header{
+    background-color: #623307;
+    color: white;
+}
+li{
+    list-style: none;
+}
+ul{
+    padding-left: 15px;
+}
+
+footer{
+    background-color: #623307;
+    color: white;
+    padding: 20px;
+}
+.container-fluid{
+    background-color: #E8CB9A;
+    
+}
+.navbar{
+    background-color: #623307;
+}
+/*.navbar .navbar-brand{
+    padding: 0px;
+    margin: 10px 0px;
+    
+}
+
+
+
+/*nav{
+    padding: 10px 0px;
+    margin:0px;
+    
+}
+/*.row div ul li{
+    text-decoration: none;
+}
+/*footer{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    padding-top: 3%;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 1%;
+    
+}
+/*.navbar-brand {
+    margin: 0px;
+    padding: 0px;
+}

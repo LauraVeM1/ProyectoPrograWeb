@@ -4,13 +4,13 @@
                 <h3>Redes Sociales</h3>
                 <ul>
                     <li>
-                        <img src="img/instagram.png" alt="instagram" height="50px" width="50px"> guerrablog
+                        <img src="img/instagram.png" alt="instagram" height="32px" width="32px"> guerrablog
                     </li>
                     <li>
-                        <img src="img/email.png" alt="email" height="50px" width="50px"> guerrablog@contactame.com
+                        <img src="img/email.png" alt="email" height="32px" width="32px"> guerrablog@contactame.com
                     </li>
                     <li>
-                        <img src="img/twitter.png" alt="twitter" height="50px" width="50px"> guerrablog
+                        <img src="img/twitter.png" alt="twitter" height="32px" width="32px"> guerrablog
                     </li>
                 </ul>
             </div>

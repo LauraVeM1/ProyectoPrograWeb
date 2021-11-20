@@ -26,11 +26,6 @@ footer{
 .navbar{
     background-color: #623307;
 }
-/*.navbar .navbar-brand{
-    padding: 0px;
-    margin: 10px 0px;
-    
-}
 
 .titulos{
     text-align: center;
@@ -150,6 +145,12 @@ input{
         width: 100%;
     }
   }
+/*.navbar .navbar-brand{
+    padding: 0px;
+    margin: 10px 0px;
+    
+}
+
 
 /*nav{
     padding: 10px 0px;

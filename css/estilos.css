@@ -105,6 +105,30 @@ input{
     border: 3px solid #E8CB9A;
 }
 
+.text-justify{
+    text-align: justify;
+}
+
+figure{
+    margin: 0 auto;
+}
+
+.img-login{
+    max-width: 60px;
+    max-height: auto;
+}
+
+.login{
+    padding: 0.5rem;
+    margin: 0 auto;
+    background-color: #B88B5C;
+    max-width: 25%;
+}
+
+.btn-login{
+    max-width: 60%;
+}
+
 @media (max-width: 992px) {
     .esc-home{
         max-width: 80%;
@@ -116,15 +140,22 @@ input{
     .text-area{
         width: 100%;
     }
+    .login{
+        max-width: 30%;
+    }
   }
 
   @media (max-width: 768px) {
     .esc-home{
         max-width: 90%;
     }
+    .login{
+        max-width: 40%;
+    }
+
   }
 
-  @media (max-width: 470%) {
+  @media (max-width: 470px) {
     .esc-home{
         padding: 0;
         max-width: 100%;
@@ -133,6 +164,10 @@ input{
 
     input{
         width: auto;
+    }
+
+    .login{
+        max-width: 60%;
     }
   }
 
@@ -143,6 +178,10 @@ input{
 
     input{
         width: 100%;
+    }
+
+    .login{
+        max-width: 75%;
     }
   }
 /*.navbar .navbar-brand{

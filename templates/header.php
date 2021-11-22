@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GuerraBlog</title>
-    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="stylesheet" href="../css/estilos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark" height="60px" style="margin:0px; padding:10px;">
             <!-- Brand -->
             <a class="navbar-brand" href="#" style="margin:0px;">
-                <img src="img/Guerrablog.png" alt="logo"  height="60px">
+                <img src="../img/Guerrablog.png" alt="logo"  height="60px">
             </a>
         </nav>
         <hr style="background-color:white; margin-bottom: 2px; margin-top: 2px;">

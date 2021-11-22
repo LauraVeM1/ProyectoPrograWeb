@@ -1,31 +1,121 @@
-*{
+* {
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
     color: white;
 }
-header{
+
+header {
     background-color: #623307;
     color: white;
 }
-li{
+
+li {
     list-style: none;
 }
-ul{
+
+ul {
     padding-left: 15px;
 }
 
-footer{
+footer {
     background-color: #623307;
     color: white;
     padding: 20px;
 }
-.container-fluid{
+
+.container-fluid {
     background-color: #E8CB9A;
-    
 }
-.navbar{
+
+.navbar {
     background-color: #623307;
 }
+
+.contenedor {
+    display: flex;
+    /*grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 35px;*/
+    flex-direction: row;
+    color: black;
+    flex-wrap: wrap;
+    margin: 30px 15px;
+    justify-content: space-between;
+}
+
+.articulos {
+    display: flex;
+    flex-direction: row;
+    color: black!important;
+    margin-top: 15px;
+}
+
+.imgArt {
+    height: 100px;
+    width: 100px;
+    margin-right: 10px;
+}
+
+div {
+    color: black;
+}
+
+.articulos:hover {
+    border: 2px solid #d0ab7a;
+}
+
+.cajaArticulo {
+    display: flex;
+    flex-flow: row;
+}
+
+.contenidoArticulo {
+    flex: 3 1 78%;
+}
+
+.seccionCom {
+    flex: 3 1 23%;
+}
+
+.contenidoComentarios {
+    margin: 20px 10px 10px 0px;
+    border: 1px solid rgb(205, 205, 205);
+    border-radius: 10px;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.bloqueCom {
+    border: 1px solid rgb(205, 205, 205);
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-radius: 10px;
+}
+
+.comentario>p {
+    font-size: 10px;
+    color: black;
+    margin-bottom: 2px;
+    margin-left: 3px;
+    text-align: justify;
+}
+
+.comentario {
+    border: 1px rgb(205, 205, 205) solid;
+    border-radius: 4px;
+    margin: 4px;
+    padding-right: 3px;
+}
+
+.fechaComen {
+    color: rgb(205, 205, 205)!important;
+}
+
+.autorComen {
+    font-weight: bold;
+}
+
+
 /*.navbar .navbar-brand{
     padding: 0px;
     margin: 10px 0px;

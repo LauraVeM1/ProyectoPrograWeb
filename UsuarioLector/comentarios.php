@@ -52,7 +52,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a id="btnCategorias" href="../UsuarioLector/comentarios.php" class="nav-link text-white">Mis comentarios</a>
+                        <a id="btnCategorias" href="#" class="nav-link text-white">Mis comentarios</a>
                     </li>
                 </ul>
             </div>
@@ -63,41 +63,29 @@
         </nav>
 
     </header>
-   
-    <div class="contenedor">
-        <div class="articulos">
-            <div >
-                <img class="imgArt" src="../ImagenesArt/guerra1.jpg" alt="">
-            </div>
-            <div>
-                Autor: Laura <br>Titulo: El maravilloso mundo deeeeee <br> Fecha: 25/11/2021
-            </div>
-        </div>
-        <div class="articulos">
-            <div >
-                <img class="imgArt" src="../ImagenesArt/guerra1.jpg" alt="">
-            </div>
-            <div>
-                Autor: Laura <br>Titulo: El maravilloso mundo deeeeee <br> Fecha: 25/11/2021
-            </div>
-        </div>
-        <div class="articulos">
-            <div >
-                <img class="imgArt" src="../ImagenesArt/guerra1.jpg" alt="">
-            </div>
-            <div>
-                Autor: Laura <br>Titulo: El maravilloso mundo deeeeee <br> Fecha: 25/11/2021
-            </div>
-        </div>
-        <div class="articulos">
-            <div >
-                <img class="imgArt" src="../ImagenesArt/guerra1.jpg" alt="">
-            </div>
-            <div>
-                Autor: Laura <br>Titulo: El maravilloso mundo deeeeee <br> Fecha: 25/11/2021
-            </div>
-        </div>
-    </div> 
+    <h1 style="color: black; text-align: center;">Mis comentarios</h1>
+    <table class="table table-sm " style="margin: 20px; width: 85%;">
+  <thead>
+    <tr class="table-active">
+      <th class="celdaCom" scope="col">Fecha</th>
+      <th class="celdaCom" scope="col">Artículo</th>
+      <th class="celdaCom" scope="col">Comentario</th>
+      <th class="celdaCom" scope="col">Acción</th>
+    </tr>
+    <tr class="table-primary">
+        <th class="celdaCom">11/02/2021</th>
+        <th class="celdaCom">El ejercito Nazi</th>
+        <th class="celdaCom">Ola</th>
+        <th class="celdaCom">Eliminar</th>
+    </tr>
+    <tr class="table-success">
+        <th class="celdaCom">11/02/2021</th>
+        <th class="celdaCom">El ejercito Nazi</th>
+        <th class="celdaCom">Ola</th>
+        <th class="celdaCom">Eliminar</th>
+    </tr>
+  </thead>
+    </table>
     <?php
     include '../templates/footer.php';
     ?>

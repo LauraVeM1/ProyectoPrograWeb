@@ -9,6 +9,47 @@ header {
     color: white;
 }
 
+ul,
+ol {
+    list-style: none;
+}
+
+.nav>li {
+    float: left;
+}
+
+.nav li a {
+    background-color: #623307;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 12px;
+    display: block;
+}
+
+.nav li a:hover {
+    background-color: #7c420b;
+}
+
+.nav li ul {
+    display: none;
+    position: absolute;
+    min-width: 140px;
+}
+
+.nav li:hover>ul {
+    display: block;
+    background-color: #623307;
+}
+
+.nav li ul li {
+    position: relative;
+}
+
+.nav li ul li ul {
+    right: -140px;
+    top: 0px;
+}
+
 li {
     list-style: none;
 }
@@ -74,14 +115,55 @@ div {
 
 .seccionCom {
     flex: 3 1 23%;
+    margin-bottom: 25px;
+    margin-top: 40px;
 }
 
 .contenidoComentarios {
     margin: 20px 10px 10px 0px;
     border: 1px solid rgb(205, 205, 205);
     border-radius: 10px;
-    height: 400px;
+    height: 600px;
     overflow-y: scroll;
+}
+
+.contenidoComentarios::-webkit-scrollbar {
+    width: 8px;
+    /* Tamaño del scroll en vertical */
+    height: 8px;
+    /* Tamaño del scroll en horizontal */
+    display: none;
+    /* Ocultar scroll */
+}
+
+.contenidoComentarios::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 32px;
+}
+
+.contenidoComentarios::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Cambiamos el fondo cuando esté en active */
+
+.contenidoComentarios::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+}
+
+.contenidoComentarios::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+}
+
+
+/* Cambiamos el fondo cuando esté en active o hover */
+
+.contenidoComentarios::-webkit-scrollbar-track:hover,
+.contenidoComentarios::-webkit-scrollbar-track:active {
+    background: #d4d4d4;
 }
 
 .bloqueCom {
@@ -113,6 +195,44 @@ div {
 
 .autorComen {
     font-weight: bold;
+}
+
+.tituloArt {
+    margin: 30px 20px 20px 50px;
+    color: black;
+}
+
+.nombreGris {
+    color: gray!important;
+    text-align: end;
+    margin-bottom: 1px;
+    padding-right: 10px;
+}
+
+.contenidowIxT {
+    margin-left: 50px;
+    text-align: justify!important;
+    margin-right: 20px;
+    margin-top: 40px;
+}
+
+.contenidowIxT>p,
+span {
+    color: black;
+    text-align: justify!important;
+}
+
+.imgTexto {
+    width: 35%;
+    margin-right: 10px;
+}
+
+.celdaCom {
+    color: black;
+}
+
+input {
+    color: black;
 }
 
 

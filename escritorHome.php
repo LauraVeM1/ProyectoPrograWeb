@@ -1,7 +1,7 @@
 <?php require_once 'templates/header.php' ?>
 <?php
     session_start();
-    $_SESSION["iduser"] = 1;
+    $_SESSION["iduser"] = $_SESSION['idLogin'];
 ?>
 <div class="container-fluid p-5">
     <div class="container text-center">

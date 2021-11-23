@@ -4,7 +4,7 @@
 ?>
 <div class="edit-art text-center">
     <h2 class="titulos">Crear Artículo</h2>
-    <form method="post" action="includes/add.php">
+    <form method="post" action="add.php">
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label class="lead">Tema</label><br>
@@ -44,7 +44,7 @@
             
         </div>
         <div>
-            <p><textarea class="text-area" name="contenido" placeholder="" required></textarea></p>
+            <p><textarea class="text-area" name="content" placeholder="Contenido" required></textarea></p>
         </div>
         <input class="btn-esc" type="submit" value="Crear">
     </form>

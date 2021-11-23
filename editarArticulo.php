@@ -1,21 +1,58 @@
 <?php require_once 'templates/header.php'?>
-
+<?php 
+    $art = $_GET["idedit"];
+?>
 <div class="container-fluid p-5">
     <div class="edit-art text-center">
         <h2>Editar Artículo</h2>
-        <form method="post" action="insertarArticulo.php">
+        <form method="post" action="edit.php">
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <?php
+                    include "includes/dbcon.php";
+                    $query_pag_data = "SELECT * FROM articulo WHERE id_articulo = ".$art." ";
+                    $result_pag_data = mysqli_query($conn, $query_pag_data);
+                    while ($row = mysqli_fetch_assoc($result_pag_data)) {
+                        $id_art = $row['id_articulo'];
+                        $tema = $row['tema'];
+                        $subtema = $row['subtema'];
+                        $contenido = $row['contenido'];
+                        $img = $row['imagen'];
+                    }
+                ?>
+                <div class="form-group col-md-4">
                 <label class="lead">Tema</label><br>
-                <input id="tema" name="tema" placeholder="Tema" type="text" value="" required>
+                <input id="art" name="idart" type="text" value="<?php echo $id_art; ?>" style="display: none;">
+                <input id="tema" name="tema" placeholder="Tema" type="text" value="<?php echo $tema; ?>" required>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                 <label class="lead">Subtema</label><br>
-                <input id="subtema" name="subtema" placeholder="Subtema" type="text" value="" required>
+                <input id="subtema" name="subtema" placeholder="Subtema" type="text" value="<?php echo $subtema; ?>" required>
                 </div>
+                    <div class="form-group col-md-4">
+                    <label class="lead">Imagen</label>
+                    <select class="text-dark sel-img" name="imagen" id="select_imagen">
+                        <option value="img1.jpg">1</option>
+                        <option value="img2.jpg">2</option>
+                        <option value="img3.jpg">3</option>
+                        <option value="img4.jpg">4</option>
+                        <option value="img5.jpg">5</option>
+                    </select><br>
+                    <div>
+                    <img id="img-articulo" src="<?php echo $img; ?>" alt="">
+                    <script>
+                        $(document).ready(function() {
+                            $("#select_imagen").change(function() {
+                                imagen = $(this).val();
+                                ruta = "img/"+imagen;
+                                $('#img-articulo').prop("src",ruta);
+                            });
+                        });
+                    </script>
+                    </div>
+                    </div>
             </div>
             <div>
-                <p><textarea class="text-area" name="contenido" placeholder="" required></textarea></p>
+                <p><textarea class="text-area" name="contenido" placeholder="" required><?php echo $contenido; ?></textarea></p>
             </div>
             
             <input class="btn-esc" type="submit" value="Guardar">

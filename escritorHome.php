@@ -26,7 +26,7 @@
                     <a href="articulosEscritor.php" class="btn-esc">Mis artículos</a>
                 </div>
                 <div class="col-md-6 mt-5 mb-5">
-                <a href="#" class="btn-esc"><i class="fa fa-plus-circle"></i>Crear artículo</a>
+                <a href="crearArticulo.php" class="btn-esc"><i class="fa fa-plus-circle"></i> Crear artículo</a>
                 </div>
             </div>
             </div>

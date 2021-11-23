@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $contra = $_POST['txtpass'];
 
         if ($inc) {
-            $consulta = "SELECT * FROM usuario where correo ='$usuario' and password = '$contra'";
+            $consulta = "SELECT * FROM usuario WHERE correo ='$usuario' and password = '$contra'";
             $resultados = mysqli_query($conn, $consulta);
             if ($resultados) {
                 while ($item = $resultados->fetch_array()) {

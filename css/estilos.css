@@ -82,6 +82,19 @@ footer{
     font-weight: bold;
 }
 
+.sel-img{
+    color: black;
+}
+
+.sel-img option{
+    color: black;
+}
+
+#img-articulo{
+    border-radius: 6px;
+    max-width:150px;
+}
+
 input{
     color:black;
 }

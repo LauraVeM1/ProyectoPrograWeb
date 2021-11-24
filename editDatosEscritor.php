@@ -36,7 +36,7 @@ if ($resultado) {
                             <label class="lead font-weight-bold" for="">Contraseña:</label>
                         </div>
                         <div class="col-md-4">
-                            <input id="pass" name="pass" class="mb-3" required disabled type="password" value="<?php echo $pass ?>">
+                            <input id="pass" name="pass" class="mb-3" title="6 Caracteres, Minimo: 1 Mayuscula, 1 numero, 1 minuscula" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$" required disabled type="password" value="<?php echo $pass ?>">
                         </div>
                         <div class="col-md-4">
                             <a id="btnPass" class="btn-brown">Cambiar</a>

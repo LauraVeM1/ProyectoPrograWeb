@@ -101,7 +101,7 @@ function verificaContra($entrada)
             <input type="submit" class="btn-login btn-brown" name="btnLogin" id="btnLogin" value="Ingresar">
         </div>
         <div class="form-group text-right">
-            <button style="padding: 0" class="btn font-weight-bold text-white">Registrarse</button>
+            <a href="Registro.php" style="padding: 0" class="btn font-weight-bold text-white">Registrarse</a>
         </div>
     </form>
 </div>

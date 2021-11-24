@@ -12,7 +12,7 @@
             <h3>
                 <?php 
                     include "includes/dbcon.php";
-                    $query_pag_data = "SELECT nombre FROM usuario";
+                    $query_pag_data = "SELECT nombre FROM usuario WHERE id_usuario = ".$_SESSION["iduser"]."";
                     $result_pag_data = mysqli_query($conn, $query_pag_data);
                     while ($row = mysqli_fetch_assoc($result_pag_data)) {
                         $nombre = $row['nombre'];

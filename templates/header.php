@@ -1,3 +1,19 @@
+<?php
+    
+    $servidor = "localhost";
+    $usuarioBD = "root";
+    $pwdBD = "";
+    $nomBD = "proyectoweb";
+    $con = mysqli_connect($servidor, $usuarioBD, $pwdBD, $nomBD);
+
+    if (!$con) {
+        die("La conexión falló: " . mysqli_connect_error());
+    } else {
+        mysqli_query($con, "SET NAME 'UTF8'");
+        session_start();
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,7 +21,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GuerraBlog</title>
-    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="stylesheet" href="../css/estilos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&display=swap" rel="stylesheet">
@@ -27,30 +43,80 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark" height="60px" style="margin:0px; padding:10px;">
-            <!-- Brand -->
-            <a class="navbar-brand" href="#" style="margin:0px;">
-                <img src="img/Guerrablog.png" alt="logo"  height="60px">
-            </a>
-        </nav>
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-dark justify-content-between" height="60px" style="margin:0px; padding:10px;">
+                <a class="navbar-brand" href="#" style="margin:0px;">
+                    <img src="../img/Guerrablog.png" alt="logo"  height="60px">
+                </a>
+                <form class="form-inline my-2 my-lg-0">
+                    <li class="nav-item dropdown" style="list-style-type:none;">
+                        <label class="my-2 my-sm-0" style="font-size: 24px; margin-right: 60px;">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <?php
+                                    if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
+                                        echo "Bienvenido " . $_SESSION["nombreUsuario"];
+                                    }
+                                ?>
+                                <i class="fa fa-user" style="margin-left: 10px;"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <?php
+
+                                    if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
+                                            echo "
+                                            <a id='btnDatosPersonales' class='dropdown-item' href='../datosPersonales.php'>Datos personales</a>
+                                            <a id='btnLogOut' class='dropdown-item' href='../Sesion/cerrarSesion.php'>Cerrar Sesión</a>
+                                        ";
+                                        
+                                    }
+                                    else {
+                                        echo "
+                                            <a id='btnLogin' class='dropdown-item' href='../Sesion/login.php'>Iniciar sesión</a>
+                                            <a id='btnSignUp' class='dropdown-item' href='../Registro/Registro.php'>Registrarse</a>
+                                        ";
+                                }
+                                ?>
+                            </div>
+                        </label>
+                    </li>
+                </form>
+            </nav>
+        </div>
         <hr style="background-color:white; margin-bottom: 2px; margin-top: 2px;">
 
-        <nav class="navbar navbar-expand-md navbar-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#colapsa">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="colapsa">
+            <div class="collapse navbar-collapse justify-content-between" id="colapsa">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a  id="btnInicio" href="#" class="nav-link text-white">Inicio</a>
+                        <a  id="btnInicio" href="../Home/home.php" class="nav-link text-white">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a id="btnArticulos" href="#" class="nav-link text-white">Artículos</a>
+                        <a id="btnArticulos" href="../Articulos.php" class="nav-link text-white">Artículos</a>
                     </li>
-                    <li class="nav-item">
-                        <a id="btnCategorias"href="#" class="nav-link text-white">Categorías</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorías</a>
+                        <div class="dropdown-menu border-dark" aria-labelledby="navbarDropdownMenuLink" style="background-color: #E8CB9A">
+                        <?php
+                                $sql=$con->query("SELECT * FROM articulo INNER JOIN usuario 
+                                ON articulo.id_autor=usuario.id_usuario 
+                                WHERE estatus_articulo ='Publicado'");
+                                while($mostrar =mysqli_fetch_array($sql)){
+                                    $tema= $mostrar['tema'];
+                                    echo'<a name="tema" class="dropdown-item" href="ArticulosCategoria.php?id='.$tema.'">'.$mostrar['tema'].'</a>';
+                                }
+                        ?>
+                        </div>
                     </li>
+                    
                 </ul>
+                <form class="form-inline col-auto"  action="../BuscarArticulo.php"method="get">
+                    <input class="form-control my-sm-auto" type="seacrh" name="busqueda" placeholder="Buscar artículo" aria-label="Search">
+                    <button class="btn btn-dark" type="submit" value="submit" name="buscar" style="border-color: white;"><i class="fa fa-search"></i></button>
+                    
+                </form> 
             </div>
         </nav>
         

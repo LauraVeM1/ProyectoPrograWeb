@@ -24,13 +24,13 @@
             <div class="container">
             <div class="row">
                 <div class="col-md-4 mt-5 mb-5">
-                    <a href="articulosEscritor.php" class="btn-esc">Mis artículos</a>
+                    <a href="articulosEscritor.php" class="btn-esc"><i class="fa fa-newspaper"></i>Mis artículos</a>
                 </div>
                 <div class="col-md-4 mt-5 mb-5">
                 <a href="crearArticulo.php" class="btn-esc"><i class="fa fa-plus-circle"></i> Crear artículo</a>
                 </div>
                 <div class="col-md-4 mt-5 mb-5">
-                <a href="editDatosEscritor.php" class="btn-esc"><i class="fa fa-plus-circle"></i>Mis Datos</a>
+                <a href="editDatosEscritor.php" class="btn-esc"><i class="fa fa-address-card"></i>Mis Datos</a>
                 </div>
             </div>
             </div>

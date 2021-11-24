@@ -43,6 +43,13 @@ footer{
     color: white;
 }
 
+.btn-brown-s{
+    border-radius: 6px;
+    color: #fff;
+    background-color: #623307;
+    border-color: #8d5c2f;
+}
+
 .btn-brown{
     padding: 0.5rem;
     border-radius: 6px;

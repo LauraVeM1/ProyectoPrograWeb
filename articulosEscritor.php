@@ -1,6 +1,5 @@
 <?php require_once 'templates/header.php' ?>
 <?php
-    session_start();
     $idusu = $_SESSION['idLogin'];
 ?>
 <script>

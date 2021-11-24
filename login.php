@@ -54,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             //Lectores
             } else if ($rol == "2") {
                 session_start();
+                $_SESSION['correo']=$usuario;
                 $_SESSION['idLogin'] = $idUsuario;
                 $_SESSION['nombreUsuario']=$nombre;
                 $_SESSION['rol']=$rol;

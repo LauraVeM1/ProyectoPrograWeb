@@ -43,6 +43,10 @@ footer{
     color: white;
 }
 
+.aviso{
+    margin: 0 auto;
+}
+
 .btn-brown-s{
     border-radius: 6px;
     color: #fff;

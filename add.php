@@ -18,7 +18,7 @@ if ($tema == '') {
 elseif($contenido == ''){
     echo "Error Introduce contenido";
 }else {
-    $sql = "INSERT INTO articulo (id_autor, tema, subtema, contenido, imagen, estatus)
+    $sql = "INSERT INTO articulo (id_autor, tema, subtema, contenido, imagen, estatus_articulo)
             VALUES (" . $iduser . ",'" . $tema . "','" . $subtema . "','" . $contenido . "','img/" . $img . "','sin publicar')";
     if ($conn->query($sql) === TRUE) {
         header("Location: escritorHome.php");

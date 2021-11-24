@@ -1,3 +1,19 @@
+<?php
+    
+    $servidor = "localhost";
+    $usuarioBD = "root";
+    $pwdBD = "";
+    $nomBD = "proyectoweb";
+    $con = mysqli_connect($servidor, $usuarioBD, $pwdBD, $nomBD);
+
+    if (!$con) {
+        die("La conexión falló: " . mysqli_connect_error());
+    } else {
+        mysqli_query($con, "SET NAME 'UTF8'");
+        session_start();
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,34 +40,72 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark" height="60px" style="margin:0px; padding:10px;">
-            <!-- Brand -->
-            <a class="navbar-brand" href="#" style="margin:0px;">
-                <img src="img/Guerrablog.png" alt="logo"  height="60px">
-            </a>
-        </nav>
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-dark justify-content-between" height="60px" style="margin:0px; padding:10px;">
+                <a class="navbar-brand" href="#" style="margin:0px;">
+                    <img src="img/Guerrablog.png" alt="logo"  height="60px">
+                </a>
+                <form class="form-inline my-2 my-lg-0">
+                    <li class="nav-item dropdown" style="list-style-type:none;">
+                        <label class="my-2 my-sm-0" style="font-size: 24px; margin-right: 60px;">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <?php
+                                    if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
+                                        echo "Bienvenido " . $_SESSION["nombreUsuario"];
+                                    }
+                                ?>
+                                <i class="fa fa-user" style="margin-left: 10px;"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <?php
+
+                                    if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
+                                            echo "
+                                            <a id='btnDatosPersonales' class='dropdown-item' href='datosPersonales.php'>Datos personales</a>
+                                            <a id='btnLogOut' class='dropdown-item' href='login.php'>Cerrar Sesión</a>
+                                        ";
+                                        
+                                    }
+                                    else {
+                                        echo "
+                                            <a id='btnLogin' class='dropdown-item' href='login.php'>Iniciar sesión</a>
+                                            <a id='btnSignUp' class='dropdown-item' href='Registro.php'>Registrarse</a>
+                                        ";
+                                }
+                                ?>
+                            </div>
+                        </label>
+                    </li>
+                </form>
+            </nav>
+        </div>
         <hr style="background-color:white; margin-bottom: 2px; margin-top: 2px;">
 
-        <nav class="navbar navbar-expand-md navbar-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#colapsa">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="colapsa">
+            <div class="collapse navbar-collapse justify-content-between" id="colapsa">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a  id="btnInicio" href="#" class="nav-link text-white">Inicio</a>
+                        <a  id="btnInicio" href="index.php" class="nav-link text-white">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a id="btnArticulos" href="#" class="nav-link text-white">Artículos</a>
+                        <a id="btnArticulos" href="Articulos.php" class="nav-link text-white">Artículos</a>
                     </li>
-                    <li class="nav-item">
-                        <a id="btnCategorias"href="#" class="nav-link text-white">Categorías</a>
-                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="btnCategorias" name="Categorias" href="BusquedaCategoria.php" class="nav-link text-white">Categorías</a>
+                   </li>
+                    
                 </ul>
+                <form class="form-inline col-auto"  action="BuscarArticulo.php"method="get">
+                    <input class="form-control my-sm-auto" type="seacrh" name="busqueda" placeholder="Buscar artículo" aria-label="Search">
+                    <button class="btn btn-dark" type="submit" value="submit" name="buscar" style="border-color: white;"><i class="fa fa-search"></i></button>
+                    
+                </form> 
             </div>
         </nav>
         

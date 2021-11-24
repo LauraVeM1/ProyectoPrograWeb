@@ -29,7 +29,7 @@
                             $id_art = $row['id_articulo'];
                             $tema = $row['tema'];
                             $subtema = $row['subtema'];
-                            $estatus = $row['estatus'];
+                            $estatus = $row['estatus_articulo'];
                             $img = $row['imagen'];
                     ?>
                     <div class="col-md-4 mb-3">

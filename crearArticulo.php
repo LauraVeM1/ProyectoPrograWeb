@@ -1,7 +1,5 @@
 <?php require_once 'templates/header.php' ?>
-<?php
-    session_start();
-?>
+
 <div class="edit-art text-center">
     <h2 class="titulos">Crear Artículo</h2>
     <form method="post" action="add.php">

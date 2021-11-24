@@ -7,7 +7,7 @@ $idart = $_GET['idpub'];
 if ($idart == '') {
     echo "Error PUBLICAR <br>";
 }else { 
-    $sql = "UPDATE  articulo  SET estatus ='publicado' WHERE id_articulo = ".$idart." ";
+    $sql = "UPDATE  articulo  SET estatus_articulo ='publicado' WHERE id_articulo = ".$idart." ";
     if ($conn->query($sql) === TRUE) {
         header("Location: articulosEscritor.php");
     } else {

@@ -1,4 +1,4 @@
-<?php require_once 'templates/header.php' ?>
+
 <?php
 $usuario = $emailErr = $Errore = $pass = $passErr = $rol = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 while ($item = $resultados->fetch_array()) {
                     $usuario = $item['correo'];
                     $pass = $item['password'];
+                    $nombre =$item['nombre'];
                     $rol = $item['id_rol'];
                     $idUsuario = $item['id_usuario'];
                 }
@@ -42,19 +43,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($rol == "1") {
                 session_start();
                 $_SESSION['idLogin'] = $idUsuario;
+                $_SESSION['nombreUsuario']=$nombre;
+                $_SESSION['rol']=$rol;
+                $_SESSION['aut'] = true;
 ?>              <script type="text/javascript">
+                    // window.location = "escritorHome.php"
                     window.location = "escritorHome.php"
                 </script>
             <?php
             //Lectores
             } else if ($rol == "2") {
+                session_start();
+                $_SESSION['idLogin'] = $idUsuario;
+                $_SESSION['nombreUsuario']=$nombre;
+                $_SESSION['rol']=$rol;
+                $_SESSION['aut'] = true;
             ?> 
                 <script type="text/javascript">
-                    window.location = "escritorHome.php"
+                    // window.location = "escritorHome.php"
+                    window.location = "Articulos.php"
                 </script>
             <?php
             //Auditores
             } else if ($rol == "3") {
+                session_start();
+                $_SESSION['idLogin'] = $idUsuario;
+                $_SESSION['nombreUsuario']=$nombre;
+                $_SESSION['rol']=$rol;
+                $_SESSION['aut'] = true;
             ?>
                 <script type="text/javascript">
                     window.location = "escritorHome.php"
@@ -79,31 +95,57 @@ function verificaContra($entrada)
 
 
 ?>
+<?php require_once 'templates/header.php' ?>
 
-<div class="container-fluid p-5">
-    <figure class="text-center" style="margin:0;"><img class="img-login" src="img/user_1.png" alt="Usuario">
-        <p class="text-dark lead font-weight-bold mb-0">Iniciar sesion a GuerraBlog</p>
-    </figure>
-
-    <form class="text-center login p-4" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        <div class="form-group text-justify">
-            <small class="error font-weight-bold">*Campo obligatorio</small>
-        </div>
-        <div class="form-group text-justify">
-            <label>Correo Electrónico</label><span class="error">*</span><br>
-            <input type="text" name="txtUsuario" class="form-control" id="usuario" placeholder="@Correo" required><br><span class="error"><?php echo $emailErr ?></span>
-        </div>
-        <div class="form-group text-justify">
-            <label>Contraseña</label><span class="error">*</span><br>
-            <input type="password" class="form-control" name="txtpass" id="pass" placeholder="Contraseña" required><br><span class="error text-center"><?php echo $passErr ?></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn-login btn-brown" name="btnLogin" id="btnLogin" value="Ingresar">
-        </div>
-        <div class="form-group text-right">
-            <a href="Registro.php" style="padding: 0" class="btn font-weight-bold text-white">Registrarse</a>
-        </div>
-    </form>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <i class="fa fa-user fa-4x center"style="color:black;"></i>
+    </div>
+    <h3 class="display text-center"style="color:black;">Inicia sesión a GuerraBlog</h3>
+    <br>
+    <div class="jumbotron w-50 mx-auto bg-dark" >
+        <form method="post" action="login.php" type="submit" id="formLogin" name="formLogin">
+            <div class="row">
+                <div class="col">
+                    <h5 align="left">Correo electrónico<span class="error">*</span></h5>
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text fa fa-at" id="correo"></span>
+                        </div>
+                        <input type="email" name="txtUsuario" id="usuario" class="form-control" placeholder="Ingrese correo electrónico" required>
+                        
+                    </div>
+                    <br><span class="error"><?php echo $emailErr ?></span>
+                    <h5 align="left">Contraseña<span class="error">*</span></h5>
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text fa fa-lock" id="contrasenia"></span>
+                        </div>
+                        <input type="password" name="txtpass" id="pass" class="form-control" placeholder="Ingrese contraseña" required>
+                    </div>
+                    <br><span class="error text-center"><?php echo $passErr ?></span>
+                    <div class="row justify-content-center">
+                        <button name="btnLogin" id="btnLogin" class="btn btn-info text-center" type="submit">
+                            <span class="fa fa-sign-in"></span> Iniciar sesión
+                        </button>
+                    </div>
+                    <br>
+                    <div class="row justify-content-around">
+                        <div class="col-sm-4">
+                            <button id="btnCancelar" class="btn btn-danger" type="button" name="cancelar" onclick="location.href='index.php'">
+                                <span class="fa fa-times"></span> Cancelar
+                            </button>
+                        </div>
+                        <div class="col-sm-8">
+                            <p align="end">¿No te has registrado?<a href="registro.php"><i><u style="margin-left:10px">Registrate</u></i></a></p> 
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
-
-<?php require_once 'templates/footer.php' ?>
+<?php
+    include 'templates/footer.php';
+?>

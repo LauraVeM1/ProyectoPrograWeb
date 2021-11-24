@@ -22,7 +22,12 @@
                 <div class="form-group col-md-4">
                 <label class="lead">Tema</label><br>
                 <input id="art" name="idart" type="text" value="<?php echo $id_art; ?>" style="display: none;">
-                <input id="tema" name="tema" placeholder="Tema" type="text" value="<?php echo $tema; ?>" required>
+                <select name="tema" id="tema">
+                    <option value="America">America</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Europa del este">Europa del este</option>
+                    <option value="Europa del oeste">Europa del oeste</option>
+                </select>
                 </div>
                 <div class="form-group col-md-4">
                 <label class="lead">Subtema</label><br>

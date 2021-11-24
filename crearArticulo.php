@@ -6,7 +6,12 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label class="lead">Tema</label><br>
-                <input id="tema" name="tema" placeholder="Tema" type="text" value="" required>
+                <select class="text-dark sel-img" name="tema" id="tema">
+                    <option value="America">America</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Europa del este">Europa del este</option>
+                    <option value="Europa del oeste">Europa del oeste</option>
+                </select>
             </div>
             <div class="form-group col-md-4">
                 <label class="lead">Subtema</label><br>

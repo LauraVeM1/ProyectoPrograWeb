@@ -21,8 +21,6 @@
     <h1 class="titulos"><?php echo $_SESSION["user"]; ?>- Mis artículos</h1>
     <div class="container">
         <div class="row text-center">
-            <div class="col-md-4 mb-3">
-                <div class="card" >
                 <?php
                         include "includes/dbcon.php";
                         $query_pag_data = "SELECT * FROM articulo WHERE id_autor = ".$idusu." ";
@@ -34,6 +32,8 @@
                             $estatus = $row['estatus'];
                             $img = $row['imagen'];
                     ?>
+                    <div class="col-md-4 mb-3">
+                <div class="card" >
                             <img class="card-img-top" src="<?php echo $img; ?>" alt="IMG-CARD">
                             <div class="card-body">
                                 <p class="card-text text-center">Tema: <?php echo $tema; ?></p>
@@ -42,10 +42,10 @@
                                 
                     <?php if($estatus == 'publicado'){
                             ?>
-                                <form action="delete.php" name="delform" method="$_POST" style="display: inline;">
-                                <button id="pub" name="delet" onclick="pregunta()" class="btn-brown" value="<?php echo $id_art; ?>">Eliminar</button>
-                                </form>
+                                
                             </div>
+                            </div>
+            </div> 
                             <?php
                             }else{
                             ?>
@@ -59,11 +59,12 @@
                                 <button id="del" name="delet" onclick="preguntaDel()" class="btn-brown" value="<?php echo $id_art; ?>">Eliminar</button>
                                 </form>
                             </div>
+                            </div>
+            </div> 
                             <?php       
                             }
                         } ?>
-                </div>
-            </div>            
+                           
         </div>
     </div>
 </div>

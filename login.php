@@ -42,13 +42,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             //Escritores
             if ($rol == "1") {
                 session_start();
+                $_SESSION['correo']=$usuario;
                 $_SESSION['idLogin'] = $idUsuario;
                 $_SESSION['nombreUsuario']=$nombre;
                 $_SESSION['rol']=$rol;
                 $_SESSION['aut'] = true;
 ?>              <script type="text/javascript">
-                    // window.location = "escritorHome.php"
-                    window.location = "Index.php"
+                    window.location = "escritorHome.php"
                 </script>
             <?php
             //Lectores
@@ -61,20 +61,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['aut'] = true;
             ?> 
                 <script type="text/javascript">
-                    // window.location = "escritorHome.php"
-                    window.location = "Articulos.php"
+                    window.location = "lectorHome.php"
                 </script>
             <?php
             //Auditores
             } else if ($rol == "3") {
                 session_start();
+                $_SESSION['correo']=$usuario;
                 $_SESSION['idLogin'] = $idUsuario;
                 $_SESSION['nombreUsuario']=$nombre;
                 $_SESSION['rol']=$rol;
                 $_SESSION['aut'] = true;
             ?>
                 <script type="text/javascript">
-                    window.location = "escritorHome.php"
+                    window.location = "auditorHome.php"
                 </script> 
 <?php
 
@@ -138,7 +138,7 @@ function verificaContra($entrada)
                             </button>
                         </div>
                         <div class="col-sm-8">
-                            <p align="end">¿No te has registrado?<a href="registro.php"><i><u style="margin-left:10px">Registrate</u></i></a></p> 
+                            <p align="end">¿No te has registrado?<a href="Registro/Registro.php"><i><u style="margin-left:10px">Registrate</u></i></a></p> 
                         </div>
                     </div>
                     

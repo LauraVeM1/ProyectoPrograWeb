@@ -1,6 +1,5 @@
 <?php require_once 'templates/header.php' ?>
 <?php
-    session_start();
     $_SESSION["iduser"] = $_SESSION['idLogin'];
     $id=$_SESSION["iduser"];
 ?>

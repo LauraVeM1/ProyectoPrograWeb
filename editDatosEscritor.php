@@ -19,24 +19,24 @@ if ($resultado) {
 ?>
 
 <div class="container-fluid">
-    <div class="container text-center">
+    <div class="container text-center p-3">
         <div class="pt-5 pb-5 esc-home">
             <figure><img style="max-width: 80px;" src="img/user.png" alt="User"></figure>
             <h1>Mis datos</h1>
-            <form class="text-justify p-5" method="POST" action="">
+            <form class="text-justify p-5" method="POST" action="editDatosbk.php">
                 <div class="form-group">
-                    <label class="lead" for="">Usuario: <?php echo $nombre . " " . $apellido ?></label>
+                    <label class="lead font-weight-bold" for="">Usuario: <?php echo $nombre . " " . $apellido ?></label>
                 </div>
                 <div class="form-group">
-                    <label class="lead" for="">Correo: <?php echo $correo ?></label>
+                    <label class="lead font-weight-bold" for="">Correo: <?php echo $correo ?></label>
                 </div>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-4">
-                            <label class="lead" for="">Contraseña:</label>
+                            <label class="lead font-weight-bold" for="">Contraseña:</label>
                         </div>
                         <div class="col-md-4">
-                            <input id="pass" required disabled type="password" value="<?php echo $pass ?>">
+                            <input id="pass" name="pass" class="mb-3" required disabled type="password" value="<?php echo $pass ?>">
                         </div>
                         <div class="col-md-4">
                             <a id="btnPass" class="btn-brown">Cambiar</a>
@@ -46,10 +46,10 @@ if ($resultado) {
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-4">
-                            <label class="lead" for="">Dirección:</label>
+                            <label class="lead font-weight-bold" for="">Dirección:</label>
                         </div>
                         <div class="col-md-4">
-                            <input id="direccion" required disabled type="text" value="<?php echo $direccion ?>">
+                            <input id="direccion" class="mb-3" name="direccion" required disabled type="text" value="<?php echo $direccion ?>">
                         </div>
                         <div class="col-md-4">
                             <a id="btnDir" class="btn-brown">Cambiar</a>
@@ -59,10 +59,10 @@ if ($resultado) {
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-4">
-                        <label class="lead" for="">Telefono:</label>
+                        <label class="lead font-weight-bold" for="">Telefono:</label>
                         </div>
                         <div class="col-md-4">
-                        <input id="telefono" required disabled type="text" value="<?php echo $telefono ?>">
+                        <input id="telefono" class="mb-3" name="telefono" maxlength="10" required disabled type="text" value="<?php echo $telefono ?>">
                         </div>
                         <div class="col-md-4">
                             <a id="btnTel" class="btn-brown">Cambiar</a>
@@ -70,7 +70,7 @@ if ($resultado) {
                     </div>
                 </div>
                 <div class="form-group text-center">
-                    <input class="btn-brown" type="submit" value="Guardar">
+                    <input id="enviar" class="btn-brown" type="submit" value="Guardar">
                 </div>
 
             </form>
@@ -79,6 +79,11 @@ if ($resultado) {
 </div>
 <script>
     $(document).ready(function () {
+        $("#enviar").on("click",function () { 
+            $("#pass").removeAttr('disabled');
+            $("#direccion").removeAttr('disabled');
+            $("#telefono").removeAttr('disabled');
+        });
         $("#btnPass").on("click",function () { 
             $("#pass").removeAttr('disabled');
             

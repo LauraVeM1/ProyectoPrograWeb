@@ -2,6 +2,7 @@
 <?php
     session_start();
     $_SESSION["iduser"] = $_SESSION['idLogin'];
+    $id=$_SESSION["iduser"];
 ?>
 <div class="container-fluid p-5">
     <div class="container text-center">
@@ -22,11 +23,14 @@
             </h3>
             <div class="container">
             <div class="row">
-                <div class="col-md-6 mt-5 mb-5">
+                <div class="col-md-4 mt-5 mb-5">
                     <a href="articulosEscritor.php" class="btn-esc">Mis artículos</a>
                 </div>
-                <div class="col-md-6 mt-5 mb-5">
+                <div class="col-md-4 mt-5 mb-5">
                 <a href="crearArticulo.php" class="btn-esc"><i class="fa fa-plus-circle"></i> Crear artículo</a>
+                </div>
+                <div class="col-md-4 mt-5 mb-5">
+                <a href="editDatosEscritor.php" class="btn-esc"><i class="fa fa-plus-circle"></i>Mis Datos</a>
                 </div>
             </div>
             </div>

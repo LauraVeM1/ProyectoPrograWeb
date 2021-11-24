@@ -1,91 +1,65 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php include "../UsuarioLector/header.php" ?>
+<h4 style="color: black; text-align: center;margin-top: 20px;">Mis comentarios</h4>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GuerraBlog</title>
-    <link rel="stylesheet" href="../css/estilos.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script rel="stylesheet" src="../css/estiloUsuarioL.css"></script>
-</head>
-
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark" height="60px" style="margin:0px; padding:10px;box-sizing:border-box; flex-direction: row!important;">
-            <!-- Brand -->
-            <a class="navbar-brand" href="#" style="margin:0px;">
-                <img src="../img/Guerrablog.png" alt="logo" height="60px">
-            </a>
-            <div class="navbar-brand" style="width: max-content;">
-               <h5> <i class="fa fa-user-circle" aria-hidden="true"></i>Bienvenido, Nombre de usuario</h5>
-              </div>
-        </nav>
-        <hr style="background-color:white; margin-bottom: 2px; margin-top: 2px;">
-
-        <nav class="navbar navbar-expand-md navbar-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#colapsa">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="colapsa">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a id="btnInicio" href="#" class="nav-link text-white">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a id="btnCategorias" href="#" class="nav-link text-white">Categorías</a>
-                        <ul class="nav" style="list-style: circles;">
-                            <li class="nav-item" ><a class="nav-link text-white"  href="">America</a></li>
-                            <li class="nav-item"><a class="nav-link text-white" href="">Asia</a></li>
-                            <li class="nav-item"><a class="nav-link text-white" href="">Oriente</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a id="btnCategorias" href="#" class="nav-link text-white">Mis comentarios</a>
-                    </li>
-                </ul>
-            </div>
-            <form action="" class="form-inline my-2 my-lg-0" id="">
-                <input type="search" class="form-control mr-sm-2" style="margin-right: 10px;" placeholder="Buscar artículo" aria-label="Search">
-                <button type="submit" class="btn btn-outline-success my-2 my-sm-0" style="color: white; border-color: white;">Buscar</button>
-            </form>
-        </nav>
-
-    </header>
-    <h1 style="color: black; text-align: center;">Mis comentarios</h1>
+<?php
+if (isset($_SESSION['name'])) {
+    $servidor = "localhost";
+    $usuarioBD = "root";
+    $pwBD = "";
+    $nomBd = "proyectoweb";
+    $db = mysqli_connect($servidor, $usuarioBD, $pwBD, $nomBd);
+    if (!$db) {
+        die("La conexión falló" . mysqli_connect_error());
+    } else {
+        mysqli_query($db, "SET NAMES 'UTF8'");
+    }
+    $correo = $_SESSION['correo'];
+    $sql1 = "SELECT * FROM COMENTARIOS where id_usuario=(SELECT id_usuario FROM USUARIO where correo='$correo')";
+    $sql1 = mysqli_query($db, $sql1);
+    if($sql1->num_rows>0){
+?>
     <table class="table table-sm " style="margin: 20px; width: 85%;">
-  <thead>
-    <tr class="table-active">
-      <th class="celdaCom" scope="col">Fecha</th>
-      <th class="celdaCom" scope="col">Artículo</th>
-      <th class="celdaCom" scope="col">Comentario</th>
-      <th class="celdaCom" scope="col">Acción</th>
-    </tr>
-    <tr class="table-primary">
-        <th class="celdaCom">11/02/2021</th>
-        <th class="celdaCom">El ejercito Nazi</th>
-        <th class="celdaCom">Ola</th>
-        <th class="celdaCom">Eliminar</th>
-    </tr>
-    <tr class="table-success">
-        <th class="celdaCom">11/02/2021</th>
-        <th class="celdaCom">El ejercito Nazi</th>
-        <th class="celdaCom">Ola</th>
-        <th class="celdaCom">Eliminar</th>
-    </tr>
-  </thead>
+        <thead>
+            <tr class="table-active">
+                <th class="celdaCom" scope="col" style="color: brown;">Fecha</th>
+                <th class="celdaCom" scope="col" style="color: brown;">Artículo</th>
+                <th class="celdaCom" scope="col" style="color: brown;">Comentario</th>
+                <th class="celdaCom" scope="col" style="color: brown;">Acción</th>
+            </tr>
+            <?php
+           
+
+            while ($fila = $sql1->fetch_assoc()) {
+            ?>
+                <tr class="table-primary">
+                    <th class="celdaCom"><?php echo $fila['fecha'] ?></th>
+                    <th class="celdaCom">El ejercito Nazi</th>
+                    <th class="celdaCom"><?php echo $fila['contenido'] ?></th>
+                    <th class="celdaCom"><button type="button" onclick="muestraMensaje()" class="btn btn-link btnClic" style="border: 1px solid black; border-radius: 50%;background-color: white;"><i style="color: black;" class="fa fa-trash"></i></button></th>
+                </tr>
+                <!--  <tr class="table-success">
+                    <th class="celdaCom">11/02/2021</th>
+                    <th class="celdaCom">El ejercito Nazi</th>
+                    <th class="celdaCom">Ola</th>
+                    <th class="celdaCom"><button type="button" class="btn btn-link btnClic" style="border: 1px solid black; border-radius: 50%;background-color: white;"><i style="color: black;" class="fa fa-trash"></i></button></th>
+                </tr>-->
+            <?php
+            }
+        
+        } else {
+            ?>
+            <h4 style="color:red;text-align: center;border: 1px solid red;">Todavia no realizas algun comentario</h4>
+        <?php
+        }
+    }
+        ?>
+        </thead>
     </table>
+    <script>
+        function muestraMensaje() {
+            alert("has presionado el boton")
+        }
+    </script>
     <?php
     include '../templates/footer.php';
     ?>

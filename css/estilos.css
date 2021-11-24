@@ -202,6 +202,10 @@ div {
     color: black;
 }
 
+.btnClic:hover {
+    background-color: #a98351!important;
+}
+
 .nombreGris {
     color: gray!important;
     text-align: end;

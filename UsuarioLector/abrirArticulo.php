@@ -1,12 +1,34 @@
-<?php include "../UsuarioLector/header.php"?>
+<?php include "../UsuarioLector/header.php";
+
+
+$servidor = "localhost";
+$usuarioBD = "root";
+$pwBD = "";
+$nomBd = "proyectoweb";
+$db = mysqli_connect($servidor, $usuarioBD, $pwBD, $nomBd);
+
+if (!$db) {
+    die("La conexión falló" . mysqli_connect_error());
+} else {
+    mysqli_query($db, "SET NAMES 'UTF8'");
+}
+$sql1;
+$busqueda = $_GET['art'];
+$sql1 = "SELECT * FROM ARTICULO WHERE id_articulo=$busqueda";
+
+$sql1 = mysqli_query($db, $sql1);
+$fila=$sql1->fetch_assoc();
+$autor=$fila['id_autor'];
+$sql2="SELECT nombre FROM USUARIO where id_usuario=$autor";
+$sql2=mysqli_query($db,$sql2)->fetch_assoc();
+?>
     <div class="cajaArticulo">
         <div class="contenidoArticulo">
-            <h1 class="tituloArt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur ratione accusamus quisquam</h1>
-            <p class="nombreGris">Autor: Lorenzo Lopez de Santa Ana</p>
-            <p class="nombreGris">Publicacion: 26/11/2021</p>
-
+            <h1 class="tituloArt"><?php echo $fila['subtema']?></h1>
+            <p class="nombreGris">Autor:<?php echo $sql2['nombre']?></p>
+            <p class="nombreGris">Publicacion: <?php echo $fila['fecha_publicacion']?></p>
             <div class="contenidowIxT">
-                <p><img src="../img/Guerrablog.png"  alt="" class="imgTexto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, nisi expedita rem accusamus nihil maiores repellendus eius minus sint odio quo ipsam et odit? Atque consequatur quia nesciunt magnam ducimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum minima vero officiis? Voluptatum minus ratione laboriosam similique vero dolor odio nesciunt libero reiciendis! Odio expedita deleniti recusandae, error laudantium quam! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolorem aliquid cupiditate? Tempora temporibus tenetur quae repudiandae fugiat et maiores dicta aperiam? Recusandae est cum sint doloremque nemo rem neque.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, nisi expedita rem accusamus nihil maiores repellendus eius minus sint odio quo ipsam et odit? Atque consequatur quia nesciunt magnam ducimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum minima vero officiis? Voluptatum minus ratione laboriosam similique vero dolor odio nesciunt libero reiciendis! Odio expedita deleniti recusandae, error laudantium quam! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolorem aliquid cupiditate? Tempora temporibus tenetur quae repudiandae fugiat et maiores dicta aperiam? Recusandae est cum sint doloremque nemo rem neque</p>
+                <p><img align="left" src="..<?php echo $fila['imagen']?>"  alt="" class="imgTexto"><?php echo $fila['contenido']?></p>
             </div>
         </div>
         <div class="seccionCom">
@@ -14,37 +36,22 @@
                 <div class="bloqueCom">
                     <h3 style="color: black;">Comentarios</h3>
                 </div>
+                <?php $sql3="SELECT * FROM COMENTARIOS WHERE id_articulo=$busqueda";
+                $sql3=mysqli_query($db,$sql3);
+                while($datos=$sql3->fetch_assoc()){
+                ?>
                 <div class="comentario">
-                    <p class="autorComen">Laura Vega Mondragon</p>
-                    <p class="fechaComen">25/11/2021</p>
-                    <p class="contenidoComen">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero asperiores sapiente dolore cumque nulla neque quas exercitationem recusandae blanditiis temporibus, eos quod </p>
+                    <p class="autorComen"><?php $iduser=$datos['id_usuario']; $sql4="SELECT nombre,apellido FROM usuario WHERE id_usuario=$iduser";$sql4=mysqli_query($db,$sql4)->fetch_assoc();echo $sql4['nombre']." ".$sql4['apellido']?></p>
+                    <p class="fechaComen"><?php echo $datos['fecha'] ?></p>
+                    <p class="contenidoComen"><?php echo $datos['contenido']?></p>
                 </div>
-                <div class="comentario">
-                    <p class="autorComen">Laura Vega Mondragon</p>
-                    <p class="fechaComen">25/11/2021</p>
-                    <p class="contenidoComen">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero asperiores sapiente dolore cumque nulla neque quas exercitationem recusandae blanditiis temporibus, eos quod </p>
-                </div>
-                <div class="comentario">
-                    <p class="autorComen">Laura Vega Mondragon</p>
-                    <p class="fechaComen">25/11/2021</p>
-                    <p class="contenidoComen">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero asperiores sapiente dolore cumque nulla neque quas exercitationem recusandae blanditiis temporibus, eos quod </p>
-                </div>
-                <div class="comentario">
-                    <p class="autorComen">Laura Vega Mondragon</p>
-                    <p class="fechaComen">25/11/2021</p>
-                    <p class="contenidoComen">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero asperiores sapiente dolore cumque nulla neque quas exercitationem recusandae blanditiis temporibus, eos quod </p>
-                </div>
-                <div class="comentario">
-                    <p class="autorComen">Laura Vega Mondragon</p>
-                    <p class="fechaComen">25/11/2021</p>
-                    <p class="contenidoComen">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero asperiores sapiente dolore cumque nulla neque quas exercitationem recusandae blanditiis temporibus, eos quod </p>
-                </div>
+               <?php }?>
             </div>
             <div class="escribirCom">
-                <form action="">
-                    <input type="text" name="comentario" id="comentario" placeholder="Agrega un comentario" style="width: 75%;">
-                    <button type="submit" class="btn btn-outline-light" style="border: 1px solid black; border-radius: 50%;"><i class="fa fa-paper-plane" style="color: black;"></i></button>
-                </form>
+                <div>
+                    <input type="text" name="comentario" id="comentarioArti" placeholder="Agrega un comentario" style="width: 75%;">
+                    <button onclick="agregaCom(<?php echo $busqueda ?>,'<?php echo $_SESSION['nombreUsuario'].' '.$_SESSION['apellido']?>')" type="submit" class="btn btn-outline-light" style="border: 1px solid black; border-radius: 50%;"><i class="fa fa-paper-plane" style="color: black;"></i></button>
+                </div>
             </div>
         </div>
     </div>

@@ -123,7 +123,9 @@ div {
     margin: 20px 10px 10px 0px;
     border: 1px solid rgb(205, 205, 205);
     border-radius: 10px;
-    height: 600px;
+    height: min-content;
+    min-height: 100px;
+    max-height: 600px;
     overflow-y: scroll;
 }
 
@@ -200,6 +202,7 @@ div {
 .tituloArt {
     margin: 30px 20px 20px 50px;
     color: black;
+    text-align: center;
 }
 
 .btnClic:hover {
@@ -227,7 +230,7 @@ span {
 }
 
 .imgTexto {
-    width: 35%;
+    width: 40%;
     margin-right: 10px;
 }
 

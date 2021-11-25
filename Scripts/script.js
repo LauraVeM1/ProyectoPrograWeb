@@ -62,6 +62,7 @@ function busqueda() {
             console.log(response);
             if (response.length > 0) {
                 window.location.href = "../UsuarioLector/busquedas.php?search=" + $busque;
+
             } else {
                 alert("No se encontraron resultados");
                 return;
@@ -82,3 +83,30 @@ $(".categorias").click(function(e) {
     alert("Prueva");
 
 });
+$(".articulos").click(function(e) {
+    var idG = ($(this).attr("data-id"));
+    window.location.href = "../UsuarioLector/abrirArticulo.php?art=" + idG;
+    return;
+});
+
+function agregaCom($valor, $autor) {
+    $cosas = $("#comentarioArti").val();
+    var fecha = new Date();
+    if ($("#comentarioArti").val().trim().length > 0) {
+        fecha = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear();
+        $.ajax({
+            type: "get",
+            url: "../Scripts/insertCom.php",
+            data: { 'fecha': fecha, 'id_art': $valor, 'contenido': $cosas },
+            dataType: "json",
+            success: function(response) {
+                $(".contenidoComentarios").html($(".contenidoComentarios").html() + "<div class=\"comentario\"><p class=\"autorComen\">" + $autor + "</p><p class=\"fechaComen\">" + fecha + "</p><p class=\"contenidoComen\">" + $cosas + "</p></div>");
+                $("#comentarioArti").val("");
+                return
+            }
+        });
+    } else {
+        alert("Su comentario no es válido o está vacío, escriba uno nuevo")
+    }
+    return
+}

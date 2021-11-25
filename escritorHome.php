@@ -29,7 +29,7 @@
                 <a href="crearArticulo.php" class="btn-esc"><i class="fa fa-plus-circle"></i> Crear artículo</a>
                 </div>
                 <div class="col-md-4 mt-5 mb-5">
-                <a href="editDatosEscritor.php" class="btn-esc"><i class="fa fa-address-card"></i>Mis Datos</a>
+                <a href="datosPersonales.php" class="btn-esc"><i class="fa fa-address-card"></i>Mis Datos</a>
                 </div>
             </div>
             </div>

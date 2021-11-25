@@ -17,6 +17,7 @@
     }
 </script>
 <div class="container-fluid py-5">
+    <a class="btn-brown" href="escritorHome.php"><i class="fa fa-arrow-left"></i> Regresar</a>
     <h1 class="titulos"><?php echo $_SESSION["user"]; ?>- Mis artículos</h1>
     <div class="container">
         <div class="row text-center">
@@ -30,6 +31,7 @@
                             $subtema = $row['subtema'];
                             $estatus = $row['estatus_articulo'];
                             $img = $row['imagen'];
+                            $fecha = $row['fecha_publicacion'];
                     ?>
                     <div class="col-md-4 mb-3">
                 <div class="card" >
@@ -41,7 +43,7 @@
                                 
                     <?php if($estatus == 'publicado'){
                             ?>
-                                
+                                <p class="card-text text-center">Fecha Publicacion: <?php echo $fecha; ?></p>
                             </div>
                             </div>
             </div> 

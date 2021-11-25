@@ -1,6 +1,7 @@
 <?php require_once 'templates/header.php' ?>
 
 <div class="edit-art text-center">
+    <div class="text-justify"><a class="btn-brown" href="escritorHome.php"><i class="fa fa-arrow-left"></i> Regresar</a></div>
     <h2 class="titulos">Crear Artículo</h2>
     <form method="post" action="add.php">
         <div class="form-row">
@@ -51,6 +52,7 @@
         </div>
         <input class="btn-esc" type="submit" value="Crear">
     </form>
+   
 </div>
 
 <?php require_once 'templates/footer.php' ?>

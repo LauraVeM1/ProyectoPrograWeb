@@ -3,7 +3,9 @@
     $art = $_GET["idedit"];
 ?>
 <div class="container-fluid p-5">
+
     <div class="edit-art text-center">
+    <div class="text-justify"><a class="btn-brown" href="escritorHome.php"><i class="fa fa-arrow-left"></i> Regresar</a></div>
         <h2>Editar Artículo</h2>
         <form method="post" action="edit.php">
             <div class="form-row">
@@ -62,6 +64,7 @@
             
             <input class="btn-esc" type="submit" value="Guardar">
         </form>
+        
     </div>
 </div>
 

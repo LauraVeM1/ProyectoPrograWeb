@@ -103,7 +103,7 @@ function verificaContra($entrada)
     </div>
     <h3 class="display text-center"style="color:black;">Inicia sesión a GuerraBlog</h3>
     <br>
-    <div class="jumbotron w-50 mx-auto bg-dark" >
+    <div class="jumbotron w-50 mx-auto bg-dark mb-0" >
         <form method="post" action="login.php" type="submit" id="formLogin" name="formLogin">
             <div class="row">
                 <div class="col">
@@ -111,7 +111,7 @@ function verificaContra($entrada)
                     <div class="input-group mb-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text fa fa-at" id="correo"></span>
-                        </div>
+                        </div> 
                         <input type="email" name="txtUsuario" id="usuario" class="form-control" placeholder="Ingrese correo electrónico" required>
                         
                     </div>

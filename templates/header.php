@@ -65,7 +65,7 @@
                                     if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
                                             echo "
                                             <a id='btnDatosPersonales' class='dropdown-item' href='datosPersonales.php'>Datos personales</a>
-                                            <a id='btnLogOut' class='dropdown-item' href='login.php'>Cerrar Sesión</a>
+                                            <a id='btnLogOut' class='dropdown-item' href='cerrarSesion.php'>Cerrar Sesión</a>
                                         ";
                                         
                                     }

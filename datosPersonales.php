@@ -17,8 +17,10 @@ if ($resultado) {
 }
 ?>
 
-<div class="container-fluid">
+<div class="container-fluid p-3">
+<div class="text-justify"><a class="btn-brown" href="escritorHome.php"><i class="fa fa-arrow-left"></i> Regresar</a></div>
     <div class="container text-center p-3">
+    
         <div class="pt-5 pb-5 esc-home">
             <figure><img style="max-width: 80px;" src="img/user.png" alt="User"></figure>
             <h1>Mis datos</h1>

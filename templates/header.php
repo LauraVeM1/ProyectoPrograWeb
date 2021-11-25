@@ -24,11 +24,23 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark" height="60px" style="margin:0px; padding:10px;">
+        <nav class="navbar navbar-expand-lg navbar-dark justify-content-between" height="60px" style="margin-right:70px; padding:10px;">
             <!-- Brand -->
             <a class="navbar-brand" href="#" style="margin:0px;">
                 <img src="img/Guerrablog.png" alt="logo" height="60px">
             </a>
+            <form class="form-inline my-2 my-lg-0" style="float: right;">
+                <li class="nav-item dropdown" style="list-style-type:none;">
+                    <label class="my-2 my-sm-0" style="font-size: 24px;">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="float: right;">
+                            <i class="fa fa-user"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a id='btnLogin' class='dropdown-item' href='index.php'>Cerrar sesión</a>
+                        </div>
+                    </label>
+                </li>
+            </form>
         </nav>
         <hr style="background-color:white; margin-bottom: 2px; margin-top: 2px;">
 
@@ -39,16 +51,15 @@
             <div class="collapse navbar-collapse" id="colapsa">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a id="btnInicio" href="#" class="nav-link text-white">Inicio</a>
+                        <a id="btnInicio" href="auditor-comentarios.php" class="nav-link text-white">Auditar comentarios</a>
                     </li>
                     <li class="nav-item">
-                        <a id="btnArticulos" href="#" class="nav-link text-white">Artículos</a>
+                        <a id="btnArticulos" href="usuarios-sancionados.php" class="nav-link text-white">Usuarios sancionados</a>
                     </li>
                     <li class="nav-item">
-                        <a id="btnCategorias" href="#" class="nav-link text-white">Categorías</a>
+                        <a id="btnCategorias" href="auditor-escritores.php" class="nav-link text-white">Auditar escritores</a>
                     </li>
                 </ul>
             </div>
         </nav>
-
     </header>

@@ -17,8 +17,6 @@ include 'templates/header.php';
     <h1 style="text-align: center;">Auditor de comentarios</h1>
 </div>
 
-<a href="auditor-comentarios.php" class="enlace" style="float: left; margin-left: 20px;"> Regresar a auditar comentarios </a>
-
 <div style="margin: 50px;">
     <h1 style="text-align: center; padding-top: 10px; color: black;">Usuarios sancionados</h1>
     <table class="table" id="comentarios" style="text-align: center;">

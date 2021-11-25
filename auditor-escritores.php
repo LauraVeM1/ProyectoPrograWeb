@@ -1,7 +1,7 @@
 <?php
 include("conexion.php");
 
-$sql = "SELECT id_usuario, nombre, apellido, rfc, correo, edad, telefono, referencias FROM usuario WHERE estatus = 'inactivo' ORDER BY id_usuario";
+$sql = "SELECT id_usuario, nombre, apellido, rfc, correo, edad, telefono, referencias FROM usuario WHERE estatus = 'inactivo' AND id_rol = 1 ORDER BY id_usuario";
 $query = mysqli_query($conexion, $sql) or die("Problemas con la consulta");
 $array = mysqli_fetch_array($query);
 
@@ -18,8 +18,6 @@ include 'templates/header.php';
 <div class="container-fluid">
     <h1 style="text-align: center;">Auditor de escritores</h1>
 </div>
-
-<a href="auditor-comentarios.php" class="enlace" style="float: left; margin-left: 20px;"> Regresar a auditar comentarios </a>
 
 <div style="margin: 50px;">
     <h1 style="text-align: center; padding-top: 10px; color: black;">Escritores por revisar</h1>
@@ -50,41 +48,29 @@ include 'templates/header.php';
                         <pre style='font-family: "Nunito"; color: black; font-size: 16px;'><?php echo $row['referencias']; ?> </pre>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-success" onclick="aceptar(<?php echo $row['id_usuario']; ?>)" role="button"> Si</button>
+                        <button type="button" class="btn btn-success" onclick="si(<?php echo $row['id_usuario']; ?>)" role="button">Si</button>
 
-                        <button type="button" class="btn btn-danger" onclick="aceptar(<?php echo $row['id_usuario']; ?>)" role="button"> No</button>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#nou<?php echo $row['id_usuario']; ?>" role="button">No</button>
                     </td>
                 </tr>
+                <?php include("modalNo.php") ?>
             <?php } ?>
         </tbody>
     </table>
 </div>
 
 <script>
-    function si(idComen) {
+    function si(idEscritor) {
         $.ajax({
-            url: "aceptar.php", //This is the current doc
+            url: "aceptarSi.php", //This is the current doc
             type: "POST",
             dataType: "json",
             data: {
-                idUser: idComen,
+                idEsc: idEscritor,
             }
         });
-        alert("Se acepto el comentario del usuario correctamente");
-        window.location = 'auditor-comentarios.php';
-    }
-
-    function no(idComen) {
-        $.ajax({
-            url: "aceptar.php", //This is the current doc
-            type: "POST",
-            dataType: "json",
-            data: {
-                idUser: idComen,
-            }
-        });
-        alert("Se acepto el comentario del usuario correctamente");
-        window.location = 'auditor-comentarios.php';
+        alert("Se acepto el escritor.");
+        window.location = 'auditor-escritores.php';
     }
 </script>
 

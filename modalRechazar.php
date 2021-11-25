@@ -45,7 +45,7 @@
                 corre: c,
             }
         });
-        alert("Se suspendio la cuenta con id " + idU + " correctamente");
+        alert("Se ha suspendio la cuenta correctamente");
         window.location = 'auditor-comentarios.php';
     }
 
@@ -62,7 +62,7 @@
                 co: correo,
             }
         });
-        alert("Se elimino permanentemente la cuenta con id " + iddU + " correctamente");
+        alert("Se ha elimino permanentemente la cuenta");
         window.location = 'auditor-comentarios.php';
     }
 </script>

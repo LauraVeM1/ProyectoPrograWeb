@@ -1,5 +1,5 @@
 <div class="modal fade" data-backdrop="static" data-keyboard="false" id="ver<?php echo $row['id_comentario']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #a06c3f !important;">
                 <h6 class="modal-title" style="color: #fff; text-align: center;">

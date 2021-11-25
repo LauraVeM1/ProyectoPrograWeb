@@ -24,7 +24,7 @@
                 <div class="form-group col-md-4">
                 <label class="lead">Tema</label><br>
                 <input id="art" name="idart" type="text" value="<?php echo $id_art; ?>" style="display: none;">
-                <select name="tema" id="tema">
+                <select class="text-dark sel-img" name="tema" id="tema">
                     <option value="America">America</option>
                     <option value="Asia">Asia</option>
                     <option value="Europa del este">Europa del este</option>

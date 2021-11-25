@@ -14,7 +14,7 @@
             while($mostrar =mysqli_fetch_array($sql)){
                 $id = $mostrar['id_articulo'];
                 echo '<div class="col-md-4">';
-                echo '<a href="Articulo.php?id='.$id.'"> ';
+                echo '<a href="anonimoArticulo.php?id='.$id.'"> ';
                     echo'<div class="row justify-content-center">';
                         
                             echo '<div class="col-md-4">';
